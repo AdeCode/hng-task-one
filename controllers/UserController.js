@@ -8,7 +8,7 @@ const getUserData = async(req, res) => {
         const response = await axios.get(`${locationRL}/?api_key=${process.env.LOCATION_KEY}`)
        
         const getWeather = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?q=${response.data.city}&appid=${weatherAPIKey}&units=metric`
+            `https://api.openweathermap.org/data/2.5/weather?q=Lagos&appid=${weatherAPIKey}&units=metric`
           );
 
         const temp = Math.round(getWeather.data.main.temp)
