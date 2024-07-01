@@ -3,6 +3,12 @@ const axios = require('axios')
 const locationRL = 'https://ipgeolocation.abstractapi.com/v1'
 const weatherAPIKey = "fc8df2ac1063bf50b0de268a5564e492";
 
+const showData = async(req, res) => {
+    res.status(200).json({
+        loc_key:process.env.LOCATION_KEY
+    })
+}
+
 const getUserData = async(req, res) => {
     try{
         const response = await axios.get(`${locationRL}/?api_key=${process.env.LOCATION_KEY}`)
@@ -27,4 +33,5 @@ const getUserData = async(req, res) => {
 
 module.exports = {
     getUserData,
+    showData
 }

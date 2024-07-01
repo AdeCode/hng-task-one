@@ -1,8 +1,9 @@
 const express = require('express');
-const { getUserData } = require('../controllers/UserController');
+const { getUserData, showData } = require('../controllers/UserController');
 const router = express.Router()
 
 
 router.get('/hello', getUserData)
+router.get('/show', showData)
 
 module.exports = router
