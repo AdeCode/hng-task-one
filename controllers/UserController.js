@@ -5,10 +5,20 @@ const weatherAPIKey = "fc8df2ac1063bf50b0de268a5564e492";
 
 const showData = async(req, res) => {
     const response = await axios.get(`https://ipapi.co/json/`)
-
+    // console.log('from show socket:',req.connection.remoteAddress)
+    const clientIp = 
+        req.headers['cf-connecting-ip'] ||
+        req.headers['x-real-ip'] || 
+        req.headers['x-forwarded-for'] ||
+        req.socket.remoteAddress || '';
+    console.log('real ip: ', clientIp)
+    const responseTwo = await axios.get(`https://ipapi.co/${req.connection.remoteAddress}/json`)
+    // console.log('two: ', responseTwo)
     res.status(200).json({
         loc_key:process.env.LOCATION_KEY,
-        ip:response.data.ip
+        ip:response.data.ip,
+        location:response.data.city,
+        clientIp
     })
 }
 
