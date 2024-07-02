@@ -24,8 +24,14 @@ const showData = async(req, res) => {
 
 const getUserData = async(req, res) => {
     try{
+        const clientIp = 
+        req.headers['cf-connecting-ip'] ||
+        req.headers['x-real-ip'] || 
+        req.headers['x-forwarded-for'] ||
+        req.socket.remoteAddress || '';
+        // const response = await axios.get(`https://ipapi.co/json/`)
+        const response = await axios.get(`https://ipapi.co/${clientIp}/json`)
 
-        const response = await axios.get(`https://ipapi.co/json/`)
         // console.log('new: ', response)
         // const response = await axios.get(`${locationRL}/?api_key=${process.env.LOCATION_KEY}`)
 
