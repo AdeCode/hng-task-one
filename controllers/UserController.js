@@ -18,7 +18,8 @@ const showData = async(req, res) => {
         loc_key:process.env.LOCATION_KEY,
         ip:response.data.ip,
         location:response.data.city,
-        clientIp
+        clientIp:clientIp,
+        data:response.data
     })
 }
 
