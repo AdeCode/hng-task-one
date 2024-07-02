@@ -4,8 +4,11 @@ const locationRL = 'https://ipgeolocation.abstractapi.com/v1'
 const weatherAPIKey = "fc8df2ac1063bf50b0de268a5564e492";
 
 const showData = async(req, res) => {
+    const response = await axios.get(`https://ipapi.co/json/`)
+
     res.status(200).json({
-        loc_key:process.env.LOCATION_KEY
+        loc_key:process.env.LOCATION_KEY,
+        ip:response.data.ip
     })
 }
 
@@ -15,11 +18,13 @@ const getUserData = async(req, res) => {
         const response = await axios.get(`https://ipapi.co/json/`)
         // console.log('new: ', response)
         // const response = await axios.get(`${locationRL}/?api_key=${process.env.LOCATION_KEY}`)
-        const getWeather = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?q=${response.data.city}&appid=${weatherAPIKey}&units=metric`
-          );
 
-        const temp = Math.round(getWeather.data.main.temp)
+        // const getWeather = await axios.get(
+        //     `https://api.openweathermap.org/data/2.5/weather?q=${response.data.city}&appid=${weatherAPIKey}&units=metric`
+        //   );
+
+        // const temp = Math.round(getWeather.data.main.temp)
+        const temp = 26
         res.status(200).json({ 
             client_ip: response.data.ip,
             location: response.data.city,
