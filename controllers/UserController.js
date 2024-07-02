@@ -11,15 +11,17 @@ const showData = async(req, res) => {
 
 const getUserData = async(req, res) => {
     try{
-        const response = await axios.get(`${locationRL}/?api_key=${process.env.LOCATION_KEY}`)
-       
+
+        const response = await axios.get(`https://ipapi.co/json/`)
+        // console.log('new: ', response)
+        // const response = await axios.get(`${locationRL}/?api_key=${process.env.LOCATION_KEY}`)
         const getWeather = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?q=Lagos&appid=${weatherAPIKey}&units=metric`
+            `https://api.openweathermap.org/data/2.5/weather?q=${response.data.city}&appid=${weatherAPIKey}&units=metric`
           );
 
         const temp = Math.round(getWeather.data.main.temp)
         res.status(200).json({ 
-            client_ip: response.data.ip_address,
+            client_ip: response.data.ip,
             location: response.data.city,
             // greeting: `Hello, ${req.query.visitor_name}!, the temperature is ${temp} degrees Celcius in ${response.data.city}` 
             greeting: `Hello, ${req.query.visitor_name}!, the temperature is ${temp} degrees Celcius in ${response.data.city}` 
