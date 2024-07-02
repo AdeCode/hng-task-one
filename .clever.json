@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "app_id": "app_9f0ed38a-eaf9-48ee-bf91-6482b0a8cd1a",
+      "org_id": "user_e4e6e36b-5b4d-4521-a14d-f2a5e4b52318",
+      "deploy_url": "https://push-n3-par-clevercloud-customers.services.clever-cloud.com/app_9f0ed38a-eaf9-48ee-bf91-6482b0a8cd1a.git",
+      "git_ssh_url": "git+ssh://git@push-n3-par-clevercloud-customers.services.clever-cloud.com/app_9f0ed38a-eaf9-48ee-bf91-6482b0a8cd1a.git",
+      "name": "hng-task",
+      "alias": "hng-task"
+    }
+  ]
+}

@@ -21,6 +21,7 @@ const getUserData = async(req, res) => {
         res.status(200).json({ 
             client_ip: response.data.ip_address,
             location: response.data.city,
+            // greeting: `Hello, ${req.query.visitor_name}!, the temperature is ${temp} degrees Celcius in ${response.data.city}` 
             greeting: `Hello, ${req.query.visitor_name}!, the temperature is ${temp} degrees Celcius in ${response.data.city}` 
         })
 

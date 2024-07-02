@@ -1,0 +1,10 @@
+{
+  "projectName": "hng-task",
+  "meta": {
+    "type": "backend"
+  },
+  "backend": {
+    "platform": "node17"
+  },
+  "hash": "c33601f1"
+}
