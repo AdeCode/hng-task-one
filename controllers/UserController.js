@@ -4,7 +4,7 @@ const locationRL = 'https://ipgeolocation.abstractapi.com/v1'
 const weatherAPIKey = "fc8df2ac1063bf50b0de268a5564e492";
 
 const showData = async(req, res) => {
-    const response = await axios.get(`https://ipapi.co/json/`)
+    // const response = await axios.get(`https://ipapi.co/json/`)
     // console.log('from show socket:',req.connection.remoteAddress)
     const clientIp = 
         req.headers['cf-connecting-ip'] ||
@@ -12,7 +12,7 @@ const showData = async(req, res) => {
         req.headers['x-forwarded-for'] ||
         req.socket.remoteAddress || '';
     console.log('real ip: ', clientIp)
-    const responseTwo = await axios.get(`https://ipapi.co/${req.connection.remoteAddress}/json`)
+    const response = await axios.get(`https://ipapi.co/${clientIp}/json`)
     // console.log('two: ', responseTwo)
     res.status(200).json({
         loc_key:process.env.LOCATION_KEY,
